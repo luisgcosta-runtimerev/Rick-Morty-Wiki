@@ -3,25 +3,50 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import './App.css';
 import Search from "./components/Search/Search";
-import Card from "./components/Card/Card";
+import Cards from "./components/Card/Cards";
 import Pagination from "./components/Pagination/Pagination";
 import Filter from "./components/Filter/Filter";
 import Navbar from "./components/Navbar/Navbar";
 
+
+
 function App() {
+
+const [pageNumber, setPageNumber] = useState(1)
+const [search, setSearch] = useState("")
+const [data, setData] = useState({})
+const [status, setStatus] = useState("")
+const [gender, setGender] = useState("")
+const [species, setSpecies] = useState("")
+const {info, results} = data
+const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
+
+
+useEffect(()=>{
+    (async function(){
+        await fetch(api)
+        .then(response => response.json())
+        .then(d => setData(d))
+    })();
+}, [api])
+
+console.log(data)
+console.log(info)
   return (
 <div className="App">
-  <h1 className="text-center mb-3">Characters</h1>
-  <div className="container">
+  <h1 className="text-center my-4 ubuntu">Rick & Morty <span className="text-primary">Wiki</span> </h1>
+  <Search setSearch={setSearch} setPageNumber={setPageNumber}/>
+  <div className="container"> 
   <div className="row">
-    Filter component will be placed here
-    <div className="col-lg-8 col-12">
+      <Filter setStatus={setStatus} setPageNumber={setPageNumber} setGender={setGender} setSpecies={setSpecies}/>
+    <div className="col-8">
       <div className="row">
-        Card component will be placed here
+        <Cards data={results} />
       </div>
     </div>
   </div>
   </div>
+      <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber}/>
 </div>
   );
 }
