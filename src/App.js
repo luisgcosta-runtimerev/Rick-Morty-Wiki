@@ -10,9 +10,15 @@ import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Episodes from "./pages/Episodes";
 import Location from "./pages/Location";
+import { createTheme, ThemeProvider } from '@mui/material';
+import CardDetails from "./components/Card/CardDetails";
+
+const theme = createTheme({});
+  
 
 function App(){
     return (
+        <ThemeProvider theme={theme}>
         <Router>
             <div className="App">
             <Navbar />
@@ -21,8 +27,13 @@ function App(){
                 <Route path="/" element={<Home />} />
                 <Route path="/episodes" element={<Episodes />} />
                 <Route path="/location" element={<Location />} />
+
+                <Route path="/:id" element={<CardDetails />} />
+                <Route path="/episodes/:id" element={<CardDetails />} />
+                <Route path="/location/:id" element={<CardDetails />} />
             </Routes>
         </Router>
+        </ThemeProvider>
     )
 }
 
@@ -54,7 +65,7 @@ console.log(info)
   <div className="container"> 
   <div className="row">
       <Filter setStatus={setStatus} setPageNumber={setPageNumber} setGender={setGender} setSpecies={setSpecies}/>
-    <div className="col-8">
+    <div className="col-lg-8 col-12">
       <div className="row">
         <Cards data={results} />
       </div>

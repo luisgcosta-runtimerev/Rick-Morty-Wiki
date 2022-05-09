@@ -1,13 +1,19 @@
 import React from 'react'
 import styles from './Cards.modules.scss'
+import { useLocation, Link } from 'react-router-dom'
 
 export default function Cards({ data }) {
-    console.log('cardDAta:', data)
 
+    const location = useLocation();
   return (
     <>{data ? (
         data.map(card =>( 
-        <div className='col-4 mb-4 position-relative' key={card.id}>
+        <Link 
+        className='col-lg-4 col-md-6 col-12 mb-4 position-relative text-dark' 
+        key={card.id} 
+        to={`${location.pathname === '/' ? '' : location.pathname}/${card.id}`}
+        style={{ textDecoration: 'none'}}
+        >
             <div className='cardstyle'>
                 <img src={card.image} alt={card.name} className='img-fluid img'/>
                 <div className='content' style={{padding: "10px"}}>
@@ -34,7 +40,7 @@ export default function Cards({ data }) {
             }
         })()}
             
-        </div>
+        </Link>
         
         )))
         :
