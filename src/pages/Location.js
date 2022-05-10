@@ -11,7 +11,7 @@ export default function Location() {
     const api = `https://rickandmortyapi.com/api/location/${id}`;
 
     useEffect(() => {
-        (async function () {
+        (async () => {
             const myData = await fetch(api).then((response) => response.json());
             setResults(myData);
 

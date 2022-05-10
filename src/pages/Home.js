@@ -16,7 +16,7 @@ export default function Home() {
     const api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
     useEffect(() => {
-        (async function () {
+        (async () => {
             await fetch(api)
                 .then((response) => response.json())
                 .then((d) => setData(d));

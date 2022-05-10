@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Container, Typography, Grid } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Cards from '../components/Card/Cards';
@@ -7,11 +8,11 @@ export default function Episodes() {
     const [id, setID] = useState(1);
     const [results, setResults] = useState([]);
     const [data, setData] = useState([]);
-    const { airDate, name } = results;
+    const { air_date, name } = results;
     const api = `https://rickandmortyapi.com/api/episode/${id}`;
-
+    const airDate = air_date;
     useEffect(() => {
-        (async function () {
+        (async () => {
             const myData = await fetch(api).then((response) => response.json());
             setResults(myData);
 
