@@ -1,7 +1,6 @@
-import { Typography } from '@mui/material'
+import { Typography, Container, Grid } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 import Cards from '../components/Card/Cards'
-import Pagination from '../components/Pagination/Pagination'
 import InputGroup from '../components/Filter/InputGroup'
 
 export default function Location() {
@@ -29,24 +28,25 @@ console.log('results:', results)
 
   return (
 
-  <div className="container"> 
-  <div className="row mb-4">
+    <Container>
+    <Grid container spacing={2} mb={4}>
+       <Grid container item direction='column'>
       <Typography variant='h3' component='h1' align='center' gutterBottom>Location: <Typography variant='span' color='primary'>{name === '' ? 'Unknown' : name} </Typography></Typography>
       <Typography variant='h6' align='center'>Dimension: {dimension === '' ? 'Unknown' : dimension} </Typography>
       <Typography variant='h6' align='center'>Type: {type === '' ? 'Unknown' : type} </Typography>
-      <div className="row">
-        <div className='col-lg-3 col-12'>
+      </Grid> 
+        <Grid container spacing={3}>
+            <Grid item xs={12} sm={12} md={3}>
           <Typography variant='h6' element='h4' align='center' mb={4} >Pick Location</Typography>  
           <InputGroup name='Location' total={126} setID={setID}/>
-        </div>
-        <div className='col-lg-8 col-12'>
-            <div className='row'>
+          </Grid>
+            <Grid item xs={12} sm={12} md={8}>
+                <Grid container mx={1} spacing={{ xs: 0, sm: 2, md: 2 }}>
                 <Cards data={data}/>
-            </div>
-        </div>
-    </div>
-  </div>
-  </div>
-
+                </Grid>
+            </Grid>
+        </Grid>
+      </Grid>
+  </Container>
   )
 }
