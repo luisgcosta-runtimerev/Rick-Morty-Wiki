@@ -7,7 +7,7 @@ export default function Pagination({ info, setPageNumber, pageNumber }) {
     const updateDimension = () => {
         setWidth(window.innerWidth);
     };
-    console.log(width);
+
     useEffect(() => {
         window.addEventListener('resize', updateDimension);
         return () => window.removeEventListener('resize', updateDimension);
