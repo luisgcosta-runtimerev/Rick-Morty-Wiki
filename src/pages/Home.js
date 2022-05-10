@@ -3,6 +3,7 @@ import Search from '../components/Search/Search'
 import Cards from "../components/Card/Cards";
 import Pagination from "../components/Pagination/Pagination";
 import Filter from "../components/Filter/Filter";
+import { Grid } from '@mui/material';
 
 export default function Home() {
     const [pageNumber, setPageNumber] = useState(1)
@@ -29,16 +30,16 @@ export default function Home() {
 
 <div className="App">
   <Search setSearch={setSearch} setPageNumber={setPageNumber}/>
-  <div className="container"> 
-  <div className="row">
+  <Grid container spacing={3}>
+    <Grid item xs={12} sm={12} md={3}>
       <Filter setStatus={setStatus} setPageNumber={setPageNumber} setGender={setGender} setSpecies={setSpecies}/>
-    <div className="col-lg-8 col-12">
-      <div className="row">
-        <Cards data={results} />
-      </div>
-    </div>
-  </div>
-  </div>
+    </Grid>
+     <Grid item xs={12} sm={12} md={8}>
+        <Grid container mx={1} spacing={{ xs: 0, sm: 2, md: 2 }}>
+            <Cards data={results} />
+        </Grid>
+      </Grid>
+    </Grid>
       <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber}/>
 </div>
   );

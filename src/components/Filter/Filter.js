@@ -1,3 +1,4 @@
+import { Container, Typography } from '@mui/material'
 import React from 'react'
 import Gender from './Category/Gender'
 import Species from './Category/Species'
@@ -5,8 +6,8 @@ import Status from './Category/Status'
 
 export default function Filter({ setStatus, setPageNumber, setSpecies, setGender }) {
   return (
-    <div className='col-lg-3 col-12 mb-5'>
-        <div className='text-center fw-bold fs-4 mb-2'>Filters</div>
+    <Container>
+        <Typography variant='h5' align='center'>Filters</Typography>
         <div 
         style={{ cursor:'pointer'}} 
         className='text-center text-primary text-decoration-underline mb-4'
@@ -23,6 +24,6 @@ export default function Filter({ setStatus, setPageNumber, setSpecies, setGender
             <Species setSpecies={setSpecies} setPageNumber={setPageNumber} />
             <Gender setGender={setGender} setPageNumber={setPageNumber} />
         </div>
-    </div>
+    </Container>
   )
 }
