@@ -8,7 +8,7 @@ export default function CardDetails() {
     const api = `https://rickandmortyapi.com/api/character/${id}`;
 
     useEffect(() => {
-        (async function () {
+        (async () => {
             await fetch(api)
                 .then((response) => response.json())
                 .then((d) => setData(d));
