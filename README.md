@@ -1,3 +1,3 @@
 # Rick & Morty Wiki React App
 
-Deployed [here]()
+Deployed [here](https://rick-morty-wiki-tutorial.netlify.app/)
